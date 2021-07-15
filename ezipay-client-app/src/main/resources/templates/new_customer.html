@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Subscription Management System</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Subscription Management System</h1>
+		<hr>
+		<h2>New Customer Registration and Subscription</h2>
+
+		<form action="#" th:action="@{/saveNewCustomer}" th:object="${customer}" method="POST">
+
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+
+			<label for="inputFirstName">First Name</label>
+			<input id="inputFirstName" type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+			<label for="inputLastName">Last Name</label>
+			<input id="inputLastName" type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+			<label for="inputEmail">Email</label>
+			<input id="inputEmail" type="text" th:field="*{email}" class="form-control mb-4 col-4">
+			<label for="inputPassword">Password</label>
+			<input id="inputPassword" type="text" th:field="*{password}" class="form-control mb-4 col-4">
+			<label for="subscription">Subscription Type</label>
+			<select id="subscription" name="subscription" class="form-control mb-4 col-4">
+				<option 
+				    th:each="subs : ${T(com.ezipay.client.app.bean.Subscription).values()}" 
+				    th:value="${subs}"
+					th:text="${subs}" 
+					th:selected="${subs.toString() == customer.subscription}">
+				</option>
+			</select>
+			<label for="inputPrice">Price</label>
+			<input id="inputPrice" type="text" th:field="*{price}" class="form-control mb-4 col-4">								
+			<label for="str_subs_start_date">Subscription Start Date (dd/mm/yyyy)</label>
+			<input type="text" id="str_subs_start_date" th:field="*{str_subs_start_date}" class="form-control mb-4 col-4">
+			<label for="str_next_billing_date">Subscription Next Billing (dd/mm/yyyy)</label>
+			<input type="text" id="str_subs_end_date" th:field="*{str_subs_end_date}" class="form-control mb-4 col-4">
+
+			<button type="submit" class="btn btn-primary"> Subscribe Now </button>
+			<a th:href="@{/}" class="btn btn-danger">Back</a>
+		</form>
+
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          okta:
+            authorization-uri: http://localhost:${server.port}/custom-login
+            user-name-attribute: email
+
+okta:
+  oauth2:
+    redirect-uri: /authorization-code/callback
+    issuer: https://dev-11029663.okta.com/oauth2/default
+    clientId: 0oa183vrq0REy8Vc45d7
+    clientSecret: ZnZuIo9NUXTZ35UnppB8Reg-r0TQ6QFYz2P4VeKx
+    scopes:
+    - openid
+    - email
+    - profile
+
+

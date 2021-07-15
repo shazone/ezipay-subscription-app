@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Subscription Management System</h1>
+		<hr>
+		<h2>Client Page</h2>
+		<form action="#" th:action="@{/login}" th:object="${customer}" method="POST">
+			<div th:if="${error} != null" class="text container">
+				<span style="color: red;font-weight: bold;">[[${error}]]<span>
+			</div>
+			<div>
+				<label>Email: <input type="text" th:field="*{email}" name="email" value=""
+						placeholder="Your Email" /></label>
+				<label>Password: <input type="password" th:field="*{password}" name="password" value="password"
+						placeholder="Your Password" /></label>
+			</div>		
+			<div>
+				<button type="submit" class="btn btn-primary">Login</button>
+				<a th:href="@{/newUser}" class="btn btn-primary">Register</a>
+			</div>				
+		</form>
+	</div>
+
+</body>
+
+</html>

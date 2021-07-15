@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Subscription Management System</title>
+<!--/*/ <th:block th:include="head :: head"/> /*/-->
+</head>
+<body id="samples">
+	<div th:replace="menu :: menu"></div>
+	<div class="container">
+		<h1>Customer Subscription</h1>
+		<hr>
+		<form action="#" th:action="@{/saveCustomer}" th:object="${customer}"
+			method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<label for="inputFirstName">First Name</label>
+			<input id="inputFirstName" type="text" th:field="*{firstName}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+			<label for="inputLastName">Last Name</label>
+			<input id="inputLastName" type="text" th:field="*{lastName}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+			<label for="inputEmail">Email</label>
+			<input id="inputEmail" type="text" th:field="*{email}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+			<label for="inputPassword">Password</label>
+			<input id="inputPassword" type="text" th:field="*{password}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+			<label for="subscription">Subscription Type</label>
+			<input id="subscription" type="text" th:field="*{subscription}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+			<label for="inputPrice">Price</label>
+			<input id="inputPrice" type="text" th:field="*{price}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">				
+			<label for="str_subs_start_date">Subscription Start Date</label>
+			<input type="text" id="str_subs_start_date" th:field="*{str_subs_start_date}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+			<label for="str_next_billing_date">Subscription Next Billing</label>
+			<input type="text" id="str_subs_end_date" th:field="*{str_subs_end_date}" class="form-control mb-4 col-4" readonly style="margin-bottom: 5px;">
+
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/customers}"> Back to Customer List</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Subscription Management System</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Subscription Management System</h1>
+		<hr>
+		<h2>Customer & Subscription Information</h2>
+
+		<form action="#" th:action="@{/doUpdate}" th:object="${customer}"
+			method="POST">
+			
+				<!-- Add hidden form field to handle update -->
+				<input type="hidden" th:field="*{id}" />
+
+				<div class="container">
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">First Name</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputFirstName" type="text" th:field="*{firstName}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Last Name</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputLastName" type="text" th:field="*{lastName}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Email</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputEmail" type="text" th:field="*{email}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Password</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputLastName" type="text" th:field="*{password}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Subscription Type</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputLastName" type="text" th:field="*{subscription}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Price</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputLastName" type="text" th:field="*{price}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Subscription Start Date</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputLastName" type="text" th:field="*{str_subs_start_date}" class="form-control mb-2 col-6" readonly></div>
+				  </div>
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3">Subscription End Date</div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><input id="inputLastName" type="text" th:field="*{str_subs_end_date}" class="form-control mb-2 col-6" readonly></div>
+				  </div>	
+				  <div class="row">
+				    <div class="col-sm-2 col-md-3"></div>
+				    <div class="col-sm-2 offset-sm-2 col-md-6 offset-md-0"><button type="submit" class="btn btn-primary"> Update </button> &nbsp; <a th:href="@{/logout}" class="btn btn-danger">Logout</a></div>
+				  </div>				  			  				  				  				  				  				  
+				</div>
+			
+			
+		</form>
+		<div class="container">
+		<div class="row"></div>
+		<!-- Force next columns to break to new line at md breakpoint and up -->
+    	<div class="w-100 d-none d-md-block"></div>
+		<div class="row">
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th> Invoice Date </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="invoice : *{invoiceDates}">
+					<td th:text="${invoice}"></td>
+				</tr>
+			</tbody>
+		</table>		
+		</div>
+		</div>		
+	</div>
+</body>
+</html>
